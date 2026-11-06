@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/mpcman_bot_v3/mpcman_bot_v3.csproj" />
+  </Folder>
+</Solution>
