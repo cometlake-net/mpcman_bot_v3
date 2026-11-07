@@ -11,7 +11,7 @@ public sealed class BotOptions
     [Required(ErrorMessage = "Bot:Token が設定されていません。")]
     public string Token { get; set; } = "";
 
-    /// <summary>コマンドを登録するサーバー（ギルド）の ID。</summary>
+    /// <summary>コマンドを登録するサーバー（ギルド）の ID。appsettings.json の "Bot:GuildId" で設定する。</summary>
     [Range(typeof(ulong), "1", "18446744073709551615", ErrorMessage = "Bot:GuildId が設定されていません。")]
     public ulong GuildId { get; set; }
 

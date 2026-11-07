@@ -44,8 +44,8 @@ Developer Portal の「OAuth2 → URL Generator」で、次の2つのスコー�
 
 | キー | 必須 | 既定値 | 内容 |
 |---|---|---|---|
-| `Bot:Token` | ○ | — | Bot トークン。**リポジトリに書かないでください。** |
-| `Bot:GuildId` | ○ | — | コマンドを登録するサーバーの ID |
+| `Bot:Token` | ○ | — | Bot トークン。**リポジトリに書かないでください。** ユーザーシークレットか環境変数で渡します。 |
+| `Bot:GuildId` | ○ | — | コマンドを登録するサーバーの ID。秘密の情報ではないので `src/mpcman_bot_v3/appsettings.json` に書きます。 |
 | `Bot:MemberRoleName` | | `部員` | 部員ロールの名前 |
 | `Bot:AlumniRoleName` | | `OB` | OB ロールの名前 |
 
@@ -58,11 +58,10 @@ Developer Portal の「OAuth2 → URL Generator」で、次の2つのスコー�
 
 ### 開発時
 
-トークンとサーバー ID をユーザーシークレットに保存します。
+トークンをユーザーシークレットに保存します（リポジトリの外に保存されます）。サーバー ID は `appsettings.json` に書いてあります。
 
 ```
 dotnet user-secrets --project src/mpcman_bot_v3 set "Bot:Token" "<トークン>"
-dotnet user-secrets --project src/mpcman_bot_v3 set "Bot:GuildId" "<サーバーID>"
 dotnet run --project src/mpcman_bot_v3
 ```
 
@@ -70,10 +69,10 @@ dotnet run --project src/mpcman_bot_v3
 
 ```
 docker build -t mpcman_bot_v3 .
-docker run -e Bot__Token=<トークン> -e Bot__GuildId=<サーバーID> mpcman_bot_v3
+docker run -e Bot__Token=<トークン> mpcman_bot_v3
 ```
 
-環境変数では、区切りの `:` を `__`（アンダースコア2つ）に置き換えます。
+環境変数では、区切りの `:` を `__`（アンダースコア2つ）に置き換えます。`appsettings.json` の値も、同じ形の環境変数（例: `-e Bot__GuildId=<サーバーID>`）で上書きできます。
 
 ## テスト
 
