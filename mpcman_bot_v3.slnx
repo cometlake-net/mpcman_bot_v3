@@ -2,4 +2,7 @@
   <Folder Name="/src/">
     <Project Path="src/mpcman_bot_v3/mpcman_bot_v3.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/mpcman_bot_v3.Tests/mpcman_bot_v3.Tests.csproj" />
+  </Folder>
 </Solution>
